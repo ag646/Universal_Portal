@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>University Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="text-center" style="margin-top: 10%;">
+        <hr>
+        <h1>Payment</h1>
+        <br>
+        <form action="#" th:action="@{/student/save_payment/{id}(id=${payment.application_id})}" th:object="${payment}"
+              method="POST">
+            <input disabled type="text" th:field="*{application_id}" value="" placeholder="Application ID"
+                   class="mb-4 col-4">
+            <br>
+            <input disabled type="number" th:field="*{amount}" value="" placeholder="Amount" class="mb-4 col-4"
+                   maxlength="16">
+            <br>
+            <input type="text" th:field="*{name}" placeholder="Name" class="mb-4 col-4">
+            <br>
+            <input type="number" th:field="*{cardNumber}" placeholder="Card Number" class="mb-4 col-4" maxlength="16">
+            <br>
+            <input type="date" th:field="*{expiryDate}" placeholder="Expiry" class="mb-4 col-4" style="width: 20%;">
+            <input type="number" th:field="*{CVV}" placeholder="CVV" class="mb-4 col-4"
+                   style="width: 10%; margin-left: 3%;" maxlength="3">
+            <br>
+            <br>
+            <button type="submit" class="btn col-2" style="background-color: white; border: 1px solid gray; ">Cancel
+            </button>
+            <button type="submit" class="btn btn-info col-2">Proceed</button>
+        </form>
+        <hr>
+    </div>
+</div>
+</body>
+
+</html>

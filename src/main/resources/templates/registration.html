@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>University Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="text-center" style="margin-top: 10%;">
+	<hr>
+	<h1>Create Account</h1>
+    <br>
+		<form action="#" th:action="@{/registration}" th:object="${user}" method="POST">
+			<input required type="text" th:field="*{username}" placeholder="Username" class="mb-4 col-4">
+			<br>
+			<input required type="email" th:field="*{email}" placeholder="Email" class="mb-4 col-4">
+			<br>
+            <input required type="password" th:field="*{password}" placeholder="Password" class="mb-4 col-4">
+			<br>
+			<select required th:field="*{type}" class="mb-4 col-4">
+				<option th:value="student">Student</option>
+				<option th:value="university">University</option>
+			</select>
+			<br>
+			<button type="submit" class="btn btn-info col-2">Create Account</button>
+			<br>
+			<div th:if="${errors!=null}">
+				<p style="color: red" th:each="error : ${errors}" th:text="${error}">Test</p>
+			</div>
+		</form>
+		<br>
+		<p>Already have an account? <a th:href="@{/login}">Login</a></p>
+		
+		<hr>
+	</div>
+</div>
+</body>
+
+</html>

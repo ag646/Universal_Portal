@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>University Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">University Portal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/student/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/student/search_university">Search University</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>
+        </li>
+    </ul>
+</nav>
+<div class="container main-container">
+    <br>
+    <h3>Dashboard</h3>
+    <br>
+    <div class="row">
+        <div class="col-md-9">
+            <h5>Total Application</h5>
+            <br>
+            <div class="card-deck">
+                <div class="card" style="background-color: #66cc66;">
+                    <div class="card-body text-center">
+                        <h6 class="card-text">Successful</h6>
+                        <hr>
+                        <p th:text="${dashboard.getSuccessfulApplication()}" class="card-text"></p>
+                    </div>
+                </div>
+                <div class="card" style="background-color: #87d5fc;">
+                    <div class="card-body text-center">
+                        <h6 class="card-text">In-process</h6>
+                        <hr>
+                        <p th:text="${dashboard.getInProgressApplication()}" class="card-text"></p>
+                    </div>
+                </div>
+                <div class="card" style="background-color: #fc8787;">
+                    <div class="card-body text-center">
+                        <h6 class="card-text">Rejected</h6>
+                        <hr>
+                        <p th:text="${dashboard.getRejectedApplication()}" class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h5>Payment</h5>
+            <br>
+            <div class="card-deck">
+                <div class="card" style="background-color: wheat;">
+                    <div class="card-body text-center">
+                        <h6 class="card-text">Total Amount</h6>
+                        <hr>
+                        <p th:text="${dashboard.getTotalPayment()}" class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h5>List of Application</h5>
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Application ID</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="app : ${listApplication}">
+            <td th:text="${app.application_id}"></td>
+            <td><a th:text="${app.status}" th:href="@{/student/application_status/{id}(id=${app.application_id})}"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="#" style="margin-left: 87%;">More Application...</a>
+    <br>
+    <br>
+    <h5>List of Payment</h5>
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Payment ID</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="payment : ${listPayment}">
+            <td th:text="${payment.application_id}"></td>
+            <td th:text="${payment.amount}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="#" style="margin-left: 87%;">More Payments...</a>
+</div>
+</body>
+</html>

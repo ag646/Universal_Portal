@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="ISO-8859-1">
+  <title>University Portal</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="text-center" style="margin-top: 10%;">
+    <hr>
+    <h1>Add Staff Members</h1>
+    <br>
+    <form action="#" th:action="@{/university/add_staff}" th:object="${staff}" method="POST">
+      <input required type="text" th:field="*{username}" placeholder="Username" class="mb-4 col-4">
+      <br>
+      <input required type="email" th:field="*{email}" placeholder="Email" class="mb-4 col-4">
+      <br>
+      <input required type="password" th:field="*{password}" placeholder="Password" class="mb-4 col-4">
+      <br>
+      <br>
+      <button type="submit" class="btn btn-info col-2">Create Account</button>
+      <br>
+      <div th:if="${errors!=null}">
+        <p th:each="error : ${errors}" th:text="${error}">Test</p>
+      </div>
+    </form>
+    <br>
+    <hr>
+  </div>
+</div>
+</body>
+
+</html>

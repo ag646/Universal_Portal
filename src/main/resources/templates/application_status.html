@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>University Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">University Portal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/student/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/student/search_university">Search University</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    <div class="text-center">
+        <br>
+        <br>
+        <br>
+        <h2>Application Status</h2>
+        <br>
+        <h5 th:object="${university}" th:inline="text" >
+            University Name: <small th:text="*{universityName}"></small>
+        </h5>
+        <h5 th:object="${program}" th:inline="text" >
+            Program Name: <small th:text="*{name}"></small>
+        </h5>
+        <h5 th:object="${applicationStatus}" th:inline="text" >
+            Application Number: <small th:text="*{application_id}"></small>
+        </h5>
+        <h5 th:object="${applicationStatus}" th:inline="text" >
+            Status: <small th:text="*{status}"></small>
+        </h5>
+    </div>
+</div>
+</body>
+</html>

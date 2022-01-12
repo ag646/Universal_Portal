@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>University Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">University Portal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/university/dashboard">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/university/add_staff">Add staff</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/university/load_list_application">Review Application</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    <div class="text-center">
+        <br>
+        <h2>University - Basic details</h2>
+        <br>
+        <form action="#" th:object="${university}" th:action="@{/university/save_university_profile/{id}(id=${university.userId})}" method="POST">
+            <input type="text" th:field="*{universityName}" placeholder="University Name" class="mb-4 col-4">
+            <br>
+            <textarea rows="5" th:field="*{universityDescription}"  placeholder="Description" class="mb-4 col-4"></textarea>
+            <br>
+            <button type="submit" class="btn btn-info col-1" >Next</button>
+        </form>
+        <br>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

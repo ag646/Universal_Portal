@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>University Portal</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">University Portal</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/university/dashboard">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/university/load_list_application">Review Application</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Log out</a>
+    </li>
+  </ul>
+</nav>
+<div class="container main-container">
+  <br>
+  <h5 style="text-align: center;">Review Application</h5>
+  <br>
+  <table border="1" class="table">
+    <thead>
+    <tr>
+      <th>List of Application</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="app : ${listApplication}">
+      <td th:text="${app.application_id}"></td>
+      <td><a th:text="${app.status}" th:href="@{/university/load_application_page/{id}(id=${app.application_id})}"></a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
